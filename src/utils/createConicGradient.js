@@ -1,7 +1,7 @@
 'use strict';
 
 const ColorInterpolate = require('./ColorInterpolate.js');
-const { createCanvas } = require('canvas');
+const { createCanvas } = require('@napi-rs/canvas');
 
 function createConicalGradient (
     userContext,

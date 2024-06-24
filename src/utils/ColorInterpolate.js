@@ -1,6 +1,6 @@
 'use strict';
 
-const { createCanvas } = require('canvas');
+const { createCanvas } = require('@napi-rs/canvas');
 
 class ColorInterpolate {
 

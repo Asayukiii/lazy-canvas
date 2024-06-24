@@ -1,7 +1,7 @@
 'use strict';
 
 const jimp = require('jimp');
-const { loadImage, createCanvas } = require('canvas');
+const { loadImage, createCanvas } = require('@napi-rs/canvas');
 const { createConicalGradient } = require('./utils/createConicGradient.js');
 const fs = require('fs');
 

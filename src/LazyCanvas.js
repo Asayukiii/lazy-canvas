@@ -1,6 +1,6 @@
 'use strict';
 
-const { createCanvas, loadImage, registerFont } = require('canvas');
+const { createCanvas, loadImage, registerFont, GlobalFonts } = require('@napi-rs/canvas');
 const jimp = require('jimp');
 const { resolve } = require('path');
 const drawMultilineText = require('canvas-multiline-text')
@@ -354,10 +354,11 @@ class LazyCanvas {
             if (!load.path) throw new Error("No path provided");
             if (!load.family) throw new Error("No family provided");
             if (!load.weight) throw new Error("No weight provided");
-            registerFont(resolve(load.path), {
+            GlobalFonts.registerFromPath(resolve(load.path), load.family);
+            /*registerFont(resolve(load.path), {
                 family: load.family,
                 weight: load.weight
-            });
+            });*/
         }
         return this;
     }
@@ -855,7 +856,7 @@ class LazyCanvas {
                     ctx.closePath();
                 }
 
-                if (WhatINeed === 'buffer') return resolve(canvas.toBuffer());
+                if (WhatINeed === 'buffer') return resolve(canvas.toBuffer('image/png'));
                 else if (WhatINeed === 'ctx') return resolve(ctx);
             } catch (e) {
                 return reject(e);
